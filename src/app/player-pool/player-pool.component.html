@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card>
+    <mat-form-field>
+      <input type="text" placeholder="Pick player" matInput [formControl]="playerAutocompleteControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let playerOption of filteredPlayerOptions | async" [value]="playerOption">
+          {{playerOption}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button [disabled]="isValidPlayer(filteredPlayerOptions | async)" (click)="addPlayer()" mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card>
+
+  <mat-card>
+    <mat-chip-list>
+      <mat-chip [removable]="true" (removed)="removePlayerFromPool(player)" color="accent" *ngFor="let player of playerPool">
+        {{player}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card>
+
+  <button (click)="onCreateTeams()" color="primary" mat-raised-button>Create Teams</button>
+</mat-card>
