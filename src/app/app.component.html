@@ -1,1 +1,4 @@
-<player-pool [playerList]="playerList"></player-pool>
+<div class="main-container">
+  <player-pool (updatePlayerPool)="updatePlayerPool($event)"></player-pool>
+  <create-teams [playerPool]="playerPool"></create-teams>
+</div>

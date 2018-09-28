@@ -1,7 +1,7 @@
-<mat-card>
+<div class="player-pool-container">
   <mat-card>
     <mat-form-field>
-      <input type="text" placeholder="Pick player" matInput [formControl]="playerAutocompleteControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Player" matInput [formControl]="playerAutocompleteControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let playerOption of filteredPlayerOptions | async" [value]="playerOption">
           {{playerOption}}
@@ -15,12 +15,11 @@
 
   <mat-card>
     <mat-chip-list>
-      <mat-chip [removable]="true" (removed)="removePlayerFromPool(player)" color="accent" *ngFor="let player of playerPool">
+      <mat-chip [removable]="true" (removed)="removePlayer(player)" color="accent" *ngFor="let player of playerPool">
         {{player}}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>
   </mat-card>
 
-  <button (click)="onCreateTeams()" color="primary" mat-raised-button>Create Teams</button>
-</mat-card>
+</div>

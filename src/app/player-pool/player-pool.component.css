@@ -1,0 +1,4 @@
+.player-pool-container {
+  display: grid;
+  grid-row-gap: 20px;
+}
